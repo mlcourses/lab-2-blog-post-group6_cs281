@@ -16,7 +16,7 @@ The materials required for this part are: one circuit diagram, one wiring diagra
 
 <center>2 to 1 wiring diagram</center>
 
-<center><img src="images/2to1Circuit.png" width="400" height="600"></center>
+<center><img src="images/2to1Circuit.png" width="500" height="600"></center>
 
 <center>2 to 1 circuit diagram</center>
 
@@ -54,6 +54,10 @@ The goal of this section is to get us familiarity with the 74150 chip, which is 
 ### Materials
 We will need a 74150 16 to 1 multiplexer chip, its documentation with the function table for configuring data selects, a wiring diagram, and the PB-503 breadboard.
 
+<center><img src="images/74150.png" width="500" height="700"></center>
+
+<center>74150 16 to 1 multiplexer</center>
+
 ### Steps 
 We will do the wirings based on the wiring diagram below.
 
@@ -76,14 +80,19 @@ After these steps, our breadboard will look like this:
 
 ### Testing
 
-To test that the multiplexer works as expected, we rely on its function board. If the combination of select lines allow the desired inputs line to work, then the multiplexer is behaving correctly. Looking at the function table, E0, E1, E2, and E3 all require C and D to be 0, which is why we connect them to the ground instead of a switch. We test the following: 
+To test that the multiplexer works as expected, we rely on its function table. If the combination of select lines allow the desired inputs line to work, then the multiplexer is behaving correctly. Looking at the function table, E0, E1, E2, and E3 all require C and D to be 0, which is why we connect them to the ground instead of a switch. We test the following: 
 
     - when A and B are low, input line E0 works.
     - when A is high and B is low, input line E1 works.
     - when A is low and B is high, input line E2 works.
     - when A and B are high, input line E3 works.
 
-Our testing is demonstrated in the video below.
+
+<center><img src="images/FunctionTable.png" width="500" height="700"></center>
+
+<center>74150 Function Table</center>
+
+Interestingly, the multiplexer invert every output. Our testing is demonstrated in the video below.
 
 ## 4 to 1 Multiplexer with Arduino - Vuong
 ### Objective
