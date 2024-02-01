@@ -1,7 +1,7 @@
 # Lab X: Doing stuff with hardware!
 
 ## Overview and Motivation - Utsav
-This week we'll explore the Digital Design in terms of learning about the two important circuits, Multiplexer and an Adder Circuit. The main purpose of this lab was for us to get more fimiliar with working on breadboards, PB-300, and in general, get comfortable with circuits. Our main goal was to build on the introductory circuits we learned last week and design two important circuits, Mux Circuit and Adder Circuit.
+This week we'll explore the Digital Design, in terms of learning about the two important circuits, Multiplexer and an Adder Circuit. The main purpose of this lab was for us to get more fimiliar with working on breadboards, PB-503 prototyping stations, Arduino - a microcontroller system for embedded processor control, logic gates  and in general, get comfortable with circuits. Our main goal was to build on the introductory circuits we learned last week and design two important circuits, Mux Circuit and Adder Circuit.
 
 
 To successfully learn and complete the lab, we divided the lab in four parts. They are:
@@ -11,7 +11,7 @@ To successfully learn and complete the lab, we divided the lab in four parts. Th
   - Build a 4 to 1 mux using a 74150 mux chip. Test with Arduino program.
   - Design and build a 1 bit adder circuit.
 
-  
+
 
 
 
