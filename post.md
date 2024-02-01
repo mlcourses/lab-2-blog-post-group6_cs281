@@ -240,7 +240,7 @@ We move on to build the carry-out circuit. Similarly, we will follow the boolean
 - Wire the output of the second input-output pair that we have just wired in the previous step as second input of the 7432 OR gate. 
 - Now, wire the output of the 7432 OR gate to the logic probe.
 
-<center><img src="images/carry_out_circuit.jpg" title="Carry-out circuit wiring" width="350" height="500"></center>
+<center><img src="images/carry_out_circuit.jpg" title="Carry-out circuit wiring" width="500" height="500"></center>
 
 ### Testing
 ##### Testing sum S circuit:
