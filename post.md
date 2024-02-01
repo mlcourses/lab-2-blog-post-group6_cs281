@@ -213,7 +213,7 @@ Similar to other parts of the lab, we will need breadboard, wires for this secti
 ### Steps
 Before starting building a real circuit, you should first draw the circuits on paper. First, we will draw the truth table that has 2 inputs, a carry-in, a sum S, and a carry-out column. 
 
-<center><img src="images/adder_truth_table.jpg" title="Adder truth table" width="350" height="500"></center>
+<center><img src="images/adder_truth_table.jpg" title="Adder truth table" width="500" height="400"></center>
 
 Once we have the truth table, we will have to construct the SOP (sum-of-products) boolean expression for our circuit. We construct the sum by adding lines (use + logic operation) that result in 1 in our inputs. Since we have 2 outputs: sum S and carry-out, we will construct 2 SOP sum. 
 
