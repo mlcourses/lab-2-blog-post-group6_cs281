@@ -96,25 +96,167 @@ Interestingly, the multiplexer invert every output. Our testing is demonstrated 
 
 ## 4 to 1 Multiplexer with Arduino - Vuong
 ### Objective
+The goal of this section is to learn to use Arduino to operate the MUX. In this section we will use a 4-to-1 MUX. 
 
 ### Materials 
+The main materials for this section is a 4-to-1 MUX and an Arduino. Also, we will still need the circuits: wires and breadboard. 
 
 ### Steps 
+Overall, in this section we will connect the 4-to-1 MUX with the Arduino to test its operation using our program. 
+
+##### 1. Circuit:
+We first start off building our circuit. To build the circuit we follow wire the MUX with the Arduino according to the instructions:
+- Wire pin 10 with Data input A (E0 on the mux) 
+- Wire pin 11 Data input B (E1 on the mux) 
+- Wire pin 12 Data input C (E2 on the mux) 
+- Wire pin 13 Data input D (E3 on the mux)
+- Wire pin 8 Select Line 0 (A on the mux) #check which switch this is
+- Wire pin 9 Select Line 1 (B on the mux)
+- Wire pin 7 output data from mux (w on the mux)
+- Lastly, Connect the GND (adjacent to pin 13, on the data side, not the power side) to ground on the breadboard. **It is important to make sure that both the Arduino and the breadboard share the a common sense of "ground"**
+
+You might wonder but we don't need to wire the Arduino with +5V (High) power source since the power is provided through our laptop. However, since we cannot provide the Ground, we still must wire Ground to the 0V hole. 
+
+<center><img src="images/mux_arduino_circuit.jpg" title="Wiring circuits" width="350" height="500"></center>
+
+Now, we will need to write a program for the Arduino. For this lab, we will use the following program:
+
+<center><img src="images/complete_circuit_connecting_arduino.jpg" title="Complete circuit connecting Arduino" width="350" height="500"></center>
+
+*Tips: You can have one person write the program while the other two wiring the circuits.*
+
+``` 
+const int S0[] = {0,0,1,1,0,0,1,1}; 
+const int S1[] = {0,0,0,0,1,1,1,1};
+const int A[] = {0,1,0,0,0,0,0,0};
+const int B[] = {0,0,0,1,0,0,0,0};
+const int C[] = {0,0,0,0,0,1,0,0};
+const int D[] = {0,0,0,0,0,0,0,1};
+const int Y[] = {0,1,0,1,0,1,0,1};
+
+// You are probably using a 74150, so the outputs are reversed.
+// Use this Y instead:
+// const int Y[] = {1,0,1,0,1,0,1,0};
+
+const int WAIT0 = 300;
+const int WAIT1 = 2000;
+int index = 0;
+int x;  // for reading input
+void setup() {
+  // Serial Port setup for communication back to computer
+  Serial.begin(9600);
+  // data pins are outputs (for Arduino)
+  pinMode(10,OUTPUT); // A
+  pinMode(11,OUTPUT); // B
+  pinMode(12,OUTPUT); // C
+  pinMode(13,OUTPUT); // D
+
+  // select pins are outputs (for Arduino)
+  pinMode(8,OUTPUT);  // S0
+
+pinMode(9,OUTPUT);  // S1
+
+  // Mux output is input for Arduino
+  pinMode(7,INPUT);
+}
+
+void loop() {
+  // write data inputs to MUX
+  digitalWrite(10,A[index]);
+  digitalWrite(11,B[index]);
+  digitalWrite(12,C[index]);
+  digitalWrite(13,D[index]);
+
+  // write select line inputs to MUX
+  digitalWrite(8,S0[index]);
+  digitalWrite(9,S1[index]);
+
+  delay(WAIT0);   // give time for logic signal to propagate
+
+  // read the MUX output
+  x = digitalRead(7);
+
+  // display the results
+  Serial.print(index);
+  Serial.print(" x:");
+  Serial.print(x,BIN);
+  Serial.print(", y:");
+  Serial.print(Y[index],BIN);
+  Serial.print("\t ");
+  if ( x == Y[index] )
+  {
+    Serial.print(": OK\n");
+  }
+else {
+    Serial.print(": BAD\n");
+  }
+  delay(WAIT1);
+  index = (index+1) % 8;  // increment index
+}
+```
+Now as we finish writing the program, go ahead and open the "Serial Monitor" window in the Arduino IDE. It is the magnifying-glass like icon in th eupper right corner of the IDE. You should see the resulats of your tests scroll across this window. 
 
 ### Testing 
+Now you will see the program print out some "BAD" and some "OK" lines. Get why? The constant array passed in ```Y[] = {0,1,0,1,0,1,0,1}``` is the output of the MUX. while ``` S0, S1, A, B, C, D``` are the 2 selectors and 4 inputs, respectively. Now you see why some ouputs are "BAD"? Yes. Some outputs in our ```Y``` are not the correct outputs according to the corresponding selectors' inputs. Hence, in order for the program to print out all "OK", we will need to change our outputs ```Y```. Look up in the pin-outs of 4-to-1 MUX and re-write the correct outputs for ```Y```. For example, if the input of S0 = 0 and S1 = 0, we will choose input E0 which is A in this case. The result is not E0 (as in the pin-outs). Since the first entry of ```A``` array is 0, not 0 is 1. Then, 1 is the first entry in hte output array ```Y```. Now trace the entire arrays and correct the outputs. Your program should print out all ```OK```.  
 
+[Your program should print out all OK](https://drive.google.com/file/d/1y4oNfLzBKID9yHvfWuYEQPd1LxKLbYpR/view)
 
+## Adder Circuit - Vuong
+Now we move on and build an adder circuit. As we already learned about adding rule in class, 0 and 0 results in sum 0 and carry-out 0. 1 plus 1 will give a sum of 0 with carry-out 1. Now, we will apply those adding rules into building a circuit.
 
-
-
-## Adder - Vuong
 ### Objective
+The goal of this section is for you to understand how to apply adding logic into building a circuit. 
 
 ### Materials
+Similar to other parts of the lab, we will need breadboard, wires for this section of the lab. 
 
 ### Steps
+Before starting building a real circuit, you should first draw the circuits on paper. First, we will draw the truth table that has 2 inputs, a carry-in, a sum S, and a carry-out column. 
+
+<center><img src="images/adder_truth_table.jpg" title="Adder truth table" width="350" height="500"></center>
+
+Once we have the truth table, we will have to construct the SOP (sum-of-products) boolean expression for our circuit. We construct the sum by adding lines (use + logic operation) that result in 1 in our inputs. Since we have 2 outputs: sum S and carry-out, we will construct 2 SOP sum. 
+
+<center><img src="images/sop_expression.jpg" title="SOP expression for sum S and Carry-out " width="350" height="500"></center>
+
+##### Wire Sum S circuit:
+Now, we will wire the circuit following the expression. 
+First, let's start building the circuit for the sum S. Following the expression, we need 2 XOR **7486 gates**.
+- Wire 2 swithces S1 and S2 to the 2 inputs pins on the gates.
+- Wire the output (at output pin Y) to the second XOR gate as input 1.
+- Wire S8 (you can choose any other switch holes on the SWITCH panel except for the 2 inputs we just have chosen) to the second input pin of the second XOR gate. 
+- Wire the output of the second XOR gate to the logic probe. 
+- Wire Vcc and GND of the 2 gates to the +5V and Ground holes on the breadboard, respectively. 
+
+<center><img src="images/sum_s_circuit.jpg" title="Sum S circuit wiring" width="350" height="500"></center>
+
+##### Wire  Carry-out circuit:
+
+We move on to build the carry-out circuit. Similarly, we will follow the boolean expression. We will need 1 AND gate (7400 gate), 1 7486 XOR gate, and 1 7432 OR gate.
+- Wire 2 switches S1, S2 to the 7486 XOR gate. Wire the output of this gate to the 7400 AND gate. 
+- Wire the switch S8 (or any other switch except the two we just wired) to as the second input of the 7400 AND gate.
+- Wire the output of the 7400 AND gate as one input of the 7432 OR gate.
+- Now, this step will be a little confusing. Take 2 other wires, plug the first wire into one of the hole on the row where the S1 wired to on SWICTH panel. Do the same thing for the seciond wire but plug it onto the row where the S2 is plugged (still on SWITCH panel). Wire the other ends of the 2 wires as 2 inputs for the second input-output pins on the AND 7400 gate (as we re-use 1 AND gate for 2 pairs of inputs-outputs). 
+- Wire the output of the second input-output pair that we have just wired in the previous step as second input of the 7432 OR gate. 
+- Now, wire the output of the 7432 OR gate to the logic probe.
+
+<center><img src="images/carry_out_circuit.jpg" title="Carry-out circuit wiring" width="350" height="500"></center>
 
 ### Testing
+##### Testing sum S circuit:
+Now that we finished wiring the sum S circuit, it should works as our truth table. For example, when we turned both S1, S2, and S8 off (A=0, B=0, Cin=0), the LED should light up green meaning the power is at LOW.
+
+Similarly, for the carry-out circuit, the LED should work exactly as the logic in our truth table. For instance, when we set S1=0, S2=0 and S8=1, the LED should light up Green indicating the power passes through it is at 0V. 
+
+[Carry out circuit](https://drive.google.com/file/d/1qxZnN8-faqeWTYPcR6fj9g88IjqDI19f/view)
+
+## Conclusion - Utsav
+
+
+
+
+
+
 
 
 
