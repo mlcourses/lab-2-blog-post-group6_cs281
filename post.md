@@ -263,8 +263,23 @@ Similarly, for the carry-out circuit, the LED should work exactly as the logic i
 ## Conclusion - Utsav
 
 
+In Conclusion, this lab provided a hands-on experience in designing, building, and testing digital circuits, specifically focusing on Multiplexers and Adder circuits. The lab was divided in four parts, each targeting different aspects of digital design. 
 
+- 2 to 1 Mux
 
+  In the first part, we constructed a 2 to 1 mux using AND, OR, and NOT gates. As we learned in class, these are universal gates i.e. every logic gate can be formed using these three basic gates. This part helped us to understand the fundamental principles of mux and how various/universal logic gates can be combined and used to achieve a specific function. The testing phase of this part showed the proper operation of the 2 to 1 mux with manual switches. 
+
+- 4 to 1 Mux
+
+  The second part introduced us to 74150 chip which is a 16 to 1 mux chip. For the purpose of this lab, we focused on building a 4 to 1 mux using this 16-1 mux chip. The hands-on experience helped us understand that it is possible to use a bigger input mux (16-1) even if we are only using some parts of it and not using all the inputs (4-1) mux. This means one can use a 32-1 mux chip as a 16-1 mux and make it function like a 16-1 mux with proper function table and by referring to the chip's documentation. We also learned that there was an unexpected inversion of outputs meaning the output was inverted (NOT).
+
+- 4 to 1 Mux with Arduino
+
+  This part helped us learn that we can control the inputs of our 4-1 Mux using Arduino. We developed a program in C that could control the all the inputs and read the output of our Mux. We compared the expected outputs with the program's output to make sure our Mux was functioning as intended.
+
+- 1-bit Adder Circuit
+
+  The final part of this lab was to design and implement a 1-bit adder circuit. To do this, we followed the truth table and SOP expressions to construct the circuit using XOR, AND, and OR gates. We tested this out using the manual switches.
 
 
 
@@ -273,6 +288,8 @@ Similarly, for the carry-out circuit, the LED should work exactly as the logic i
 
 
 ## Conclusion - Utsav
+
+Overall, This lab expanded our understanding of digital circuits, Boolean Logic, and the practical applications of Mux and Adders. Working with both, manual switches and the automated control using arduino for controlling the inputs helped us understand and appreciate the efficiency and versatility that Arduino brings in to the world of Digital circuit design. Not just this, the challenges faced during the lab, such as unexpected outputs, inversion of outputs, etc helped us gain valuable troubleshooting experience and enhanced our problem-solving skills.
 
 
 
