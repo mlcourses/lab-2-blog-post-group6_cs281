@@ -217,7 +217,7 @@ Before starting building a real circuit, you should first draw the circuits on p
 
 Once we have the truth table, we will have to construct the SOP (sum-of-products) boolean expression for our circuit. We construct the sum by adding lines (use + logic operation) that result in 1 in our inputs. Since we have 2 outputs: sum S and carry-out, we will construct 2 SOP sum. 
 
-<center><img src="images/sop_expression.jpg" title="SOP expression for sum S and Carry-out " width="650" height="300"></center>
+<center><img src="images/sop_expression.jpg" title="SOP expression for sum S and Carry-out " width="700" height="350"></center>
 
 ##### Wire Sum S circuit:
 Now, we will wire the circuit following the expression. 
