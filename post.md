@@ -1,6 +1,6 @@
 # Lab 2: Adders and Multiplexers
 
-## Overview and Motivation - Utsav
+## Overview and Motivation
 This week we'll explore Digital Design, in terms of learning about the two important circuit components, a Multiplexer and an Adder Circuit. This lab will get us more familiarity with working on breadboards - PB-503 prototyping stations, Arduino - a microcontroller system for embedded processor control, logic gates and circuits in general. Our main goal was to build on the introductory circuits we learned last week and design two more important circuits, Mux Circuit and Adder Circuit.
 
 
@@ -13,7 +13,7 @@ To successfully learn and complete the lab, we divided the lab in four parts. Th
 
 
 
-## 2 to 1 Multiplexer - Long
+## 2 to 1 Multiplexer
 ### Objective
 In this first part of the lab, we will simulate a 2 to 1 multiplexer using only AND, OR and NOT gates. The aim here is to demonstrate that any multiplexer can be taken apart into basic Boolean logic. By using just AND, OR, and NOT gates, we can create all kinds of multiplexers, like 2 to 1 or 16 to 1.
 ### Materials
@@ -54,11 +54,10 @@ Our breadboard would look like this:
 ### Testing 
 Testing this circuit board is simple. From the wiring diagram, we see that depending on the signal from S1, the output to the OR gate would come from either the top or bottom AND gate. If S1 sends a 1, then the output will be dependent on the S6 switch. Otherwise, if S1 sends a 0, the signal goes through the inverter, where it is turned to 1, activating the top AND gate. The output will now depend on S5. This testing procedure can be shown in the video below.
 
-(2to1TestingVid)
 [2to1TestingVid](https://drive.google.com/file/d/1MPH8vamWVN9U2dzcAmlhkLw0eE9nAsBe/view?usp=share_link)
 
 
-## 4 to 1 Multiplexer - Long
+## 4 to 1 Multiplexer
 ### Objective
 
 The goal of this section is to get us familiarity with the 74150 chip, a 16 to 1 multiplexer. We will only build a 4 to 1 multiplexer using this chip, which means only 4 out of the 16 data lines and 2 out of the 4 input lines will be used.
@@ -111,12 +110,12 @@ To test that the multiplexer works as expected, we rely on its function table. I
 
 Interestingly, the multiplexer invert every output. Our testing is demonstrated in the video below.
 
-(4to1TestingVid)
+
 [4-to-1 Testing](https://drive.google.com/file/d/13Hvj8zDpEm02mBRPTM6PxFtklGKIPJB3/view?usp=share_link)
 
 As expected, the combination of A's and B's low signals made the output dependent on E0, which is toggled by the S5 switch. Since the multiplexer inverts every output, E0's low signal results in red (1) in the logic probe, and vice versa.
 
-## 4 to 1 Multiplexer with Arduino - Vuong
+## 4 to 1 Multiplexer with Arduino
 ### Objective
 The goal of this section is to learn to use Arduino to operate the MUX. In this section we will use the 4-to-1 MUX built from the previous section. 
 
@@ -220,21 +219,21 @@ else {
   index = (index+1) % 8;  // increment index
 }
 ```
-Now as we finish writing the program, go ahead and open the "Serial Monitor" window in the Arduino IDE. It is the magnifying-glass like icon in th eupper right corner of the IDE. You should see the resulats of your tests scroll across this window. 
+Now as we finish writing the program, go ahead and open the "Serial Monitor" window in the Arduino IDE. It is the magnifying-glass like icon in the upper right corner of the IDE. You should see the results of your tests scrolling across this window. 
 
 ### Testing 
 Now you will see the program print out some "BAD" and some "OK" lines. Get why? The constant array passed in ```Y[] = {0,1,0,1,0,1,0,1}``` is the output of the MUX. while ``` S0, S1, A, B, C, D``` are the 2 selectors and 4 inputs, respectively. Now you see why some ouputs are "BAD"? Yes. Some outputs in our ```Y``` are not the correct outputs according to the corresponding selectors' inputs. Hence, in order for the program to print out all "OK", we will need to change our outputs ```Y```. Look up in the pin-outs of 4-to-1 MUX and re-write the correct outputs for ```Y```. For example, if the input of S0 = 0 and S1 = 0, we will choose input E0 which is A in this case. The result is not E0 (as in the pin-outs). Since the first entry of ```A``` array is 0, not 0 is 1. Then, 1 is the first entry in the output array ```Y```. Now trace the entire arrays and correct the outputs. Your program should print out all ```OK```.  
 
 [Your program should print out all OK](https://drive.google.com/file/d/1y4oNfLzBKID9yHvfWuYEQPd1LxKLbYpR/view)
 
-## Adder Circuit - Vuong
-Now we move on and build an adder circuit. As we already learned about adding rule in class, 0 and 0 results in sum 0 and carry-out 0. 1 plus 1 will give a sum of 0 with carry-out 1. Now, we will apply those adding rules into building a circuit.
+## Adder Circuit
+Now we move on and build an adder circuit. As we already learned about adding rules in class, 0 and 0 results in sum 0 and carry-out 0. 1 plus 1 will give a sum of 0 with carry-out 1. Now, we will apply those rules into building a circuit.
 
 ### Objective
 The goal of this section is for you to understand how to apply adding logic into building a circuit. 
 
 ### Materials
-Similar to other parts of the lab, we will need breadboard, wires for this section of the lab. We also need 2 XOR gates for this circuit design.
+Similar to other parts of the lab, we will need a breadboard, wires for this section of the lab. We also need 2 XOR gates for this circuit design.
 
 ### Steps
 Before starting building a real circuit, you should first draw the circuits on paper. First, we will draw the truth table that has 2 inputs, a carry-in, a sum S, and a carry-out column. 
@@ -276,7 +275,7 @@ We move on to build the carry-out circuit. Similarly, we will follow the boolean
 
 ### Testing
 ##### Testing sum S circuit:
-Now that we finished wiring the sum S circuit, it should works as our truth table. For example, when we turned both S1, S2, and S8 off (A=0, B=0, Cin=0), the LED should light up green meaning the power is at LOW.
+Now that we have finished wiring the sum S circuit, it should work as seen in our truth table. For example, when we turned both S1, S2, and S8 off (A=0, B=0, Cin=0), the LED should light up green meaning the power is at LOW.
 
 [Sum S circuit demo](https://drive.google.com/file/d/1tvZiMgMJUY0FSE2oHpqN_bs1qNKzNJHK/view?usp=share_link)
 
@@ -285,8 +284,8 @@ Similarly, for the carry-out circuit, the LED should work exactly as the logic i
 
 [Carry out circuit demo](https://drive.google.com/file/d/1qxZnN8-faqeWTYPcR6fj9g88IjqDI19f/view)
 
-## Conclusion - Utsav
-In Conclusion, this lab provided a hands-on experience in designing, building, and testing digital circuits, specifically focusing on Multiplexers and Adder circuits. The lab was divided in four parts, each targeting different aspects of digital design. 
+## Conclusion
+In conclusion, this lab provided a hands-on experience in designing, building, and testing digital circuits, specifically focusing on Multiplexers and Adder circuits. The lab was divided in four parts, each targeting different aspects of digital design. 
 
 - 2 to 1 Mux
 
@@ -304,10 +303,5 @@ In Conclusion, this lab provided a hands-on experience in designing, building, a
 
   The final part of this lab was to design and implement a 1-bit adder circuit. To do this, we followed the truth table and SOP expressions to construct the circuit using XOR, AND, and OR gates. We tested this out using the manual switches.
 
-## Conclusion - Utsav
 
 Overall, This lab expanded our understanding of digital circuits, Boolean Logic, and the practical applications of Mux and Adders. Working with both, manual switches and the automated control using arduino for controlling the inputs helped us understand and appreciate the efficiency and versatility that Arduino brings in to the world of Digital circuit design. Not just this, the challenges faced during the lab, such as unexpected outputs, inversion of outputs, etc helped us gain valuable troubleshooting experience and enhanced our problem-solving skills.
-
-
-
-
