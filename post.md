@@ -19,13 +19,16 @@ In this first part of the lab, we will simulate a 2 to 1 multiplexer using only 
 ### Materials
 The materials required for this part are: one circuit diagram, one wiring diagram, a PB-503 breadboard, as well as 3 IC chips: 7404 (NOT), 7408 (AND), and 7432 (OR). 
 
-<center><img src="images/2to1Wiring.png" width="350" height="500"></center>
+<!-- <center><img src="images/2to1Wiring.png" width="350" height="500"></center> -->
 
-<center>2 to 1 wiring diagram</center>
+[2 to 1 wiring diagram](https://drive.google.com/file/d/1DldDSbQIDFIHO6eDHFPNahU4Mt738tir/view)
 
-<center><img src="images/2to1Circuit.png" width="500" height="600"></center>
+<!-- <center>2 to 1 wiring diagram</center> -->
 
-<center>2 to 1 circuit diagram</center>
+<!-- <center><img src="images/2to1Circuit.png" width="500" height="600"></center> -->
+
+[2-to-1 circuit](https://drive.google.com/file/d/1Ib3hKxwidDpeGwYirGwhulNvYEeNdRTu/view)
+<!-- <center>2 to 1 circuit diagram</center> -->
 
 
 ### Steps 
@@ -42,15 +45,17 @@ The materials required for this part are: one circuit diagram, one wiring diagra
 
 Our breadboard would look like this:
  
-<center><img src="images/2to1Construction.jpg" width="400" height="600"></center>
+<!-- <center><img src="images/2to1Construction.jpg" width="400" height="600"></center> -->
 
-<center>2 to 1 circuit</center>
+[2 to 1 circuit](https://drive.google.com/file/d/1cyXoW7mJAJwjW5dqKW7CL8PV6HDjmDsI/view?usp=share_link)
+
+<!-- <center>2 to 1 circuit</center> -->
 
 ### Testing 
 Testing this circuit board is simple. From the wiring diagram, we see that depending on the signal from S1, the output to the OR gate would come from either the top or bottom AND gate. If S1 sends a 1, then the output will be dependent on the S6 switch. Otherwise, if S1 sends a 0, the signal goes through the inverter, where it is turned to 1, activating the top AND gate. The output will now depend on S5. This testing procedure can be shown in the video below.
 
 (2to1TestingVid)
-
+[2to1TestingVid](https://drive.google.com/file/d/1MPH8vamWVN9U2dzcAmlhkLw0eE9nAsBe/view?usp=share_link)
 
 
 ## 4 to 1 Multiplexer - Long
@@ -61,17 +66,19 @@ The goal of this section is to get us familiarity with the 74150 chip, a 16 to 1
 ### Materials
 We will need a 74150 16 to 1 multiplexer chip, its documentation with the function table for configuring data selects, a wiring diagram, and the PB-503 breadboard.
 
-<center><img src="images/74150.jpg" width="500" height="700"></center>
+<!-- <center><img src="images/74150.jpg" width="500" height="700"></center> -->
+[74150 16 to 1 multiplexer](https://drive.google.com/file/d/1hALwXE-G-tVRaLAzzBeObaq5mSTPop-A/view?usp=share_link)
 
-<center>74150 16 to 1 multiplexer</center>
+<!-- <center>74150 16 to 1 multiplexer</center> -->
 
 ### Steps 
 We will do the wirings based on the wiring diagram below.
 
 
-<center><img src="images/4to1Diagram.png" width="600" height="500"></center>
+<!-- <center><img src="images/4to1Diagram.png" width="600" height="500"></center> -->
+[4 to 1 multiplexer diagram](https://drive.google.com/file/d/19JNFtXW5Egq_f9FIktiUFKsrwYEzTy9E/view?usp=share_link)
 
-<center>4 to 1 multiplexer diagram</center>
+<!-- <center>4 to 1 multiplexer diagram</center> -->
 
     Step 1: We plug in the multiplexer chip into the breadboard, connecting it to the 5 volts power source and ground using its VCC and GND pins, respectively.
 
@@ -81,9 +88,10 @@ We will do the wirings based on the wiring diagram below.
 
 After these steps, our breadboard will look like this: 
 
-<center><img src="images/4to1Mux.jpg" width="500" height="700"></center>
+<!-- <center><img src="images/4to1Mux.jpg" width="500" height="700"></center> -->
+[4 to 1 multiplexer](https://drive.google.com/file/d/1StdHQGC9DND_6tPYEWVFUZWoXhuuRYsf/view?usp=share_link)
 
-<center>4 to 1 multiplexer</center>
+<!-- <center>4 to 1 multiplexer</center> -->
 
 
 ### Testing
@@ -96,13 +104,15 @@ To test that the multiplexer works as expected, we rely on its function table. I
     - when A and B are high, input line E3 works.
 
 
-<center><img src="images/FunctionTable.png" width="500" height="700"></center>
+<!-- <center><img src="images/FunctionTable.png" width="500" height="700"></center> -->
+[74150 Function Table](https://drive.google.com/file/d/1TQvIDRfXPoxaV88F-qy9i5Bitlex6TD5/view?usp=share_link)
 
-<center>74150 Function Table</center>
+<!-- <center>74150 Function Table</center> -->
 
 Interestingly, the multiplexer invert every output. Our testing is demonstrated in the video below.
 
 (4to1TestingVid)
+[4-to-1 Testing](https://drive.google.com/file/d/13Hvj8zDpEm02mBRPTM6PxFtklGKIPJB3/view?usp=share_link)
 
 As expected, the combination of A's and B's low signals made the output dependent on E0, which is toggled by the S5 switch. Since the multiplexer inverts every output, E0's low signal results in red (1) in the logic probe, and vice versa.
 
@@ -129,11 +139,15 @@ We first start off building our circuit. To build the circuit we follow wire the
 
 You might wonder but we don't need to wire the Arduino with +5V (High) power source since the power is provided through our laptop. However, since we cannot provide the Ground, we still must wire Ground to the 0V hole. 
 
-<center><img src="images/mux_arduino_circuit.jpg" title="Wiring circuits" width="350" height="500"></center>
+<!-- <center><img src="images/mux_arduino_circuit.jpg" title="Wiring circuits" width="350" height="500"></center> -->
+[Wiring circuits](https://drive.google.com/file/d/1Ch9X0nmIEOzdn5Y657QGVVTP53oO0nv0/view?usp=share_link)
+
 
 Now, we will need to write a program for the Arduino. For this lab, we will use the following program:
 
-<center><img src="images/complete_circuit_connecting_arduino.jpg" title="Complete circuit connecting Arduino" width="350" height="500"></center>
+<!-- <center><img src="images/complete_circuit_connecting_arduino.jpg" title="Complete circuit connecting Arduino" width="350" height="500"></center> -->
+
+[Complete circuit connecting Arduino](https://drive.google.com/file/d/1h6-9mb-0CR_PRmvidzd3bxSqGhy5zlAT/view?usp=share_link)
 
 *Tips: You can have one person write the program while the other two wiring the circuits.*
 
@@ -225,11 +239,15 @@ Similar to other parts of the lab, we will need breadboard, wires for this secti
 ### Steps
 Before starting building a real circuit, you should first draw the circuits on paper. First, we will draw the truth table that has 2 inputs, a carry-in, a sum S, and a carry-out column. 
 
-<center><img src="images/adder_truth_table.jpg" title="Adder truth table" width="500" height="400"></center>
+<!-- <center><img src="images/adder_truth_table.jpg" title="Adder truth table" width="500" height="400"></center> -->
+
+[Adder truth table](https://drive.google.com/file/d/1Eg5y5NJhdRMm5Djl4-Y8llEfvuqoEyeS/view?usp=share_link)
 
 Once we have the truth table, we will have to construct the SOP (sum-of-products) boolean expression for our circuit. We construct the sum by adding lines (use + logic operation) that result in 1 in our inputs. Since we have 2 outputs: sum S and carry-out, we will construct 2 SOP sum. 
 
-<center><img src="images/sop_expression.jpg" title="SOP expression for sum S and Carry-out " width="800" height="350"></center>
+<!-- <center><img src="images/sop_expression.jpg" title="SOP expression for sum S and Carry-out " width="800" height="350"></center> -->
+
+[SOP expression for sum S and Carry-out](https://drive.google.com/file/d/1wHVY1e24vZJZIRUgEK-ped4R_WlRbOmo/view?usp=share_link)
 
 ##### Wire Sum S circuit:
 Now, we will wire the circuit following the expression. 
@@ -240,9 +258,10 @@ First, let's start building the circuit for the sum S. Following the expression,
 - Wire the output of the second XOR gate to the logic probe. 
 - Wire Vcc and GND of the 2 gates to the +5V and Ground holes on the breadboard, respectively. 
 
-<center><img src="images/sum_s_circuit.jpg" title="Sum S circuit wiring" width="350" height="500"></center>
+<!-- <center><img src="images/sum_s_circuit.jpg" title="Sum S circuit wiring" width="350" height="500"></center> -->
+[Sum S circuit wiring](https://drive.google.com/file/d/1ffz5X7KNVxKTHu2bn2hotshUzafVhE-d/view?usp=share_link)
 
-##### Wire  Carry-out circuit:
+##### Wire carry-out circuit:
 
 We move on to build the carry-out circuit. Similarly, we will follow the boolean expression. We will need 1 AND gate (7400 gate), 1 7486 XOR gate, and 1 7432 OR gate.
 - Wire 2 switches S1, S2 to the 7486 XOR gate. Wire the output of this gate to the 7400 AND gate. 
@@ -252,19 +271,21 @@ We move on to build the carry-out circuit. Similarly, we will follow the boolean
 - Wire the output of the second input-output pair that we have just wired in the previous step as second input of the 7432 OR gate. 
 - Now, wire the output of the 7432 OR gate to the logic probe.
 
-<center><img src="images/carry_out_circuit.jpg" title="Carry-out circuit wiring" width="500" height="500"></center>
+<!-- <center><img src="images/carry_out_circuit.jpg" title="Carry-out circuit wiring" width="500" height="500"></center> -->
+[Carry-out circuit wiring](https://drive.google.com/file/d/17rU-BfdLEjjXD-NeKeI2rKt5Nlg3JGzF/view?usp=share_link)
 
 ### Testing
 ##### Testing sum S circuit:
 Now that we finished wiring the sum S circuit, it should works as our truth table. For example, when we turned both S1, S2, and S8 off (A=0, B=0, Cin=0), the LED should light up green meaning the power is at LOW.
 
+[Sum S circuit demo](https://drive.google.com/file/d/1tvZiMgMJUY0FSE2oHpqN_bs1qNKzNJHK/view?usp=share_link)
+
+##### Testing carry-out circuit:
 Similarly, for the carry-out circuit, the LED should work exactly as the logic in our truth table. For instance, when we set S1=0, S2=0 and S8=1, the LED should light up Green indicating the power passes through it is at 0V. 
 
-[Carry out circuit](https://drive.google.com/file/d/1qxZnN8-faqeWTYPcR6fj9g88IjqDI19f/view)
+[Carry out circuit demo](https://drive.google.com/file/d/1qxZnN8-faqeWTYPcR6fj9g88IjqDI19f/view)
 
 ## Conclusion - Utsav
-
-
 In Conclusion, this lab provided a hands-on experience in designing, building, and testing digital circuits, specifically focusing on Multiplexers and Adder circuits. The lab was divided in four parts, each targeting different aspects of digital design. 
 
 - 2 to 1 Mux
@@ -282,12 +303,6 @@ In Conclusion, this lab provided a hands-on experience in designing, building, a
 - 1-bit Adder Circuit
 
   The final part of this lab was to design and implement a 1-bit adder circuit. To do this, we followed the truth table and SOP expressions to construct the circuit using XOR, AND, and OR gates. We tested this out using the manual switches.
-
-
-
-
-
-
 
 ## Conclusion - Utsav
 
