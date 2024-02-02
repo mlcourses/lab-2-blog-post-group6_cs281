@@ -1,14 +1,14 @@
 # Lab 2: Adders and Multiplexers
 
 ## Overview and Motivation
-This week we'll explore Digital Design, in terms of learning about the two important circuit components, a Multiplexer and an Adder Circuit. This lab will get us more familiarity with working on breadboards - PB-503 prototyping stations, Arduino - a microcontroller system for embedded processor control, logic gates and circuits in general. Our main goal was to build on the introductory circuits we learned last week and design two more important circuits, Mux Circuit and Adder Circuit.
+This week we'll explore Digital Design, in terms of learning about the two important circuit components, a Multiplexer and an Adder Circuit. This lab will get us more familiarity with working on breadboards - PB-503 prototyping stations, Arduino - a microcontroller system for embedded processor control, logic gates, and circuits in general. Our main goal is to build on the introductory circuits we learned last week and design two more important circuits, Mux Circuit and Adder Circuit.
 
 
 To successfully learn and complete the lab, we divided the lab in four parts. They are:
 
   - Building a 2 to 1 mux out of AND, OR and NOT gates, tested with switches.
   - Building a 4 to 1 mux using a 74150 mux chip, tested with switches.
-  - Building a 4 to 1 mux using a 74150 mux chip, tested with Arduino program.
+  - Building a 4 to 1 mux using a 74150 mux chip, tested with an Arduino program.
   - Designing and building a 1 bit adder circuit.
 
 
@@ -60,7 +60,7 @@ Testing this circuit board is simple. From the wiring diagram, we see that depen
 ## 4 to 1 Multiplexer
 ### Objective
 
-The goal of this section is to get us familiarity with the 74150 chip, a 16 to 1 multiplexer. We will only build a 4 to 1 multiplexer using this chip, which means only 4 out of the 16 data lines and 2 out of the 4 input lines will be used.
+The goal of this section is to get us familiarized with the 74150 chip, a 16 to 1 multiplexer. We will only build a 4 to 1 multiplexer using this chip, which means only 4 out of the 16 data lines and 2 out of the 4 input lines will be used.
 
 ### Materials
 We will need a 74150 16 to 1 multiplexer chip, its documentation with the function table for configuring data selects, a wiring diagram, and the PB-503 breadboard.
@@ -108,7 +108,7 @@ To test that the multiplexer works as expected, we rely on its function table. I
 
 <!-- <center>74150 Function Table</center> -->
 
-Interestingly, the multiplexer invert every output. Our testing is demonstrated in the video below.
+Interestingly, the multiplexer inverts every output. Our testing is demonstrated in the video below.
 
 
 [4-to-1 Testing](https://drive.google.com/file/d/13Hvj8zDpEm02mBRPTM6PxFtklGKIPJB3/view?usp=share_link)
@@ -304,4 +304,4 @@ In conclusion, this lab provided a hands-on experience in designing, building, a
   The final part of this lab was to design and implement a 1-bit adder circuit. To do this, we followed the truth table and SOP expressions to construct the circuit using XOR, AND, and OR gates. We tested this out using the manual switches.
 
 
-Overall, This lab expanded our understanding of digital circuits, Boolean Logic, and the practical applications of Mux and Adders. Working with both, manual switches and the automated control using arduino for controlling the inputs helped us understand and appreciate the efficiency and versatility that Arduino brings in to the world of Digital circuit design. Not just this, the challenges faced during the lab, such as unexpected outputs, inversion of outputs, etc helped us gain valuable troubleshooting experience and enhanced our problem-solving skills.
+Overall, This lab expanded our understanding of digital circuits, Boolean Logic, and the practical applications of Multiplexers and Adders. Working with both, manual switches and the automated control using Arduino for controlling the inputs helped us understand and appreciate the efficiency and versatility that Arduino brings in to the world of Digital Circuit design. Not just this, the challenges faced during the lab, such as unexpected outputs, inversion of outputs, etc helped us gain valuable troubleshooting experience and enhanced our problem-solving skills.
