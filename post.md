@@ -1,18 +1,15 @@
-# Lab X: Doing stuff with hardware!
+# Lab 2: Adders and Multiplexers
 
 ## Overview and Motivation - Utsav
-This week we'll explore the Digital Design, in terms of learning about the two important circuits, Multiplexer and an Adder Circuit. The main purpose of this lab was for us to get more fimiliar with working on breadboards, PB-503 prototyping stations, Arduino - a microcontroller system for embedded processor control, logic gates  and in general, get comfortable with circuits. Our main goal was to build on the introductory circuits we learned last week and design two important circuits, Mux Circuit and Adder Circuit.
+This week we'll explore Digital Design, in terms of learning about the two important circuit components, a Multiplexer and an Adder Circuit. This lab will get us more familiarity with working on breadboards - PB-503 prototyping stations, Arduino - a microcontroller system for embedded processor control, logic gates and circuits in general. Our main goal was to build on the introductory circuits we learned last week and design two more important circuits, Mux Circuit and Adder Circuit.
 
 
 To successfully learn and complete the lab, we divided the lab in four parts. They are:
 
-  - Build a 2 to 1 mux out of AND, OR and NOT gates. Test with switches.
-  - Build a 4 to 1 mux using a 74150 mux chip. Test with switches.
-  - Build a 4 to 1 mux using a 74150 mux chip. Test with Arduino program.
-  - Design and build a 1 bit adder circuit.
-
-
-
+  - Building a 2 to 1 mux out of AND, OR and NOT gates, tested with switches.
+  - Building a 4 to 1 mux using a 74150 mux chip, tested with switches.
+  - Building a 4 to 1 mux using a 74150 mux chip, tested with Arduino program.
+  - Designing and building a 1 bit adder circuit.
 
 
 
@@ -33,9 +30,9 @@ The materials required for this part are: one circuit diagram, one wiring diagra
 
 ### Steps 
 
-    Step 1: We wire the 5 volts source to the top row of the breadboard, as well as the ground to the row right below.
+    Step 1: We wire the 5 volts source to the top row of the breadboard, as well as the ground to the row right below. This setup will be kept throughout the lab.
 
-    Step 2: We plug two AND chips, one NOT chips, and one OR chips into the breadboard. We connect the IC chips' VCC into the 5 volts source and GND into the ground.
+    Step 2: We plug two 7408(AND) chips, one 7404(NOT) chips, and one 7432(OR) chips into the breadboard. We connect the IC chips' VCC pins into the 5 volts source and GND pins into the ground.
 
     Step 3: The S1 switch is going to be our select line for the multiplexer, with the S5 switch representing input line A and the S6 switch representing input line B. We connect S1 and S6 to an AND gate's input pins (1A and 1B). 
 
@@ -50,26 +47,27 @@ Our breadboard would look like this:
 <center>2 to 1 circuit</center>
 
 ### Testing 
-Testing this circuit board is simple. From the wiring diagram, we see that depending on the signal from S1, the output to the OR gate would come from either the top or bottom AND gate. If S1 sends a 1, then output will be dependent on the S6 switch. Otherwise, if S1 sends a 0, the signal goes through the inverter, where it is turned to 1, activating the top AND gate. The output will now depends on S5. This testing procedure can be shown in the video below.
+Testing this circuit board is simple. From the wiring diagram, we see that depending on the signal from S1, the output to the OR gate would come from either the top or bottom AND gate. If S1 sends a 1, then the output will be dependent on the S6 switch. Otherwise, if S1 sends a 0, the signal goes through the inverter, where it is turned to 1, activating the top AND gate. The output will now depend on S5. This testing procedure can be shown in the video below.
 
-
+(2to1TestingVid)
 
 
 
 ## 4 to 1 Multiplexer - Long
 ### Objective
 
-The goal of this section is to get us familiarity with the 74150 chip, which is a 16 to 1 multiplexer. We will only build a 4 to 1 multiplexer using this chip, which means only 4 out of the 16 data lines and 2 out of the 4 input lines will be used.
+The goal of this section is to get us familiarity with the 74150 chip, a 16 to 1 multiplexer. We will only build a 4 to 1 multiplexer using this chip, which means only 4 out of the 16 data lines and 2 out of the 4 input lines will be used.
 
 ### Materials
 We will need a 74150 16 to 1 multiplexer chip, its documentation with the function table for configuring data selects, a wiring diagram, and the PB-503 breadboard.
 
-<center><img src="images/74150.png" width="500" height="700"></center>
+<center><img src="images/74150.jpg" width="500" height="700"></center>
 
 <center>74150 16 to 1 multiplexer</center>
 
 ### Steps 
 We will do the wirings based on the wiring diagram below.
+
 
 <center><img src="images/4to1Diagram.png" width="600" height="500"></center>
 
@@ -104,9 +102,13 @@ To test that the multiplexer works as expected, we rely on its function table. I
 
 Interestingly, the multiplexer invert every output. Our testing is demonstrated in the video below.
 
+(4to1TestingVid)
+
+As expected, the combination of A's and B's low signals made the output dependent on E0, which is toggled by the S5 switch. Since the multiplexer inverts every output, E0's low signal results in red (1) in the logic probe, and vice versa.
+
 ## 4 to 1 Multiplexer with Arduino - Vuong
 ### Objective
-The goal of this section is to learn to use Arduino to operate the MUX. In this section we will use a 4-to-1 MUX. 
+The goal of this section is to learn to use Arduino to operate the MUX. In this section we will use the 4-to-1 MUX built from the previous section. 
 
 ### Materials 
 The main materials for this section is a 4-to-1 MUX and an Arduino. Also, we will still need the circuits: wires and breadboard. 
@@ -207,7 +209,7 @@ else {
 Now as we finish writing the program, go ahead and open the "Serial Monitor" window in the Arduino IDE. It is the magnifying-glass like icon in th eupper right corner of the IDE. You should see the resulats of your tests scroll across this window. 
 
 ### Testing 
-Now you will see the program print out some "BAD" and some "OK" lines. Get why? The constant array passed in ```Y[] = {0,1,0,1,0,1,0,1}``` is the output of the MUX. while ``` S0, S1, A, B, C, D``` are the 2 selectors and 4 inputs, respectively. Now you see why some ouputs are "BAD"? Yes. Some outputs in our ```Y``` are not the correct outputs according to the corresponding selectors' inputs. Hence, in order for the program to print out all "OK", we will need to change our outputs ```Y```. Look up in the pin-outs of 4-to-1 MUX and re-write the correct outputs for ```Y```. For example, if the input of S0 = 0 and S1 = 0, we will choose input E0 which is A in this case. The result is not E0 (as in the pin-outs). Since the first entry of ```A``` array is 0, not 0 is 1. Then, 1 is the first entry in hte output array ```Y```. Now trace the entire arrays and correct the outputs. Your program should print out all ```OK```.  
+Now you will see the program print out some "BAD" and some "OK" lines. Get why? The constant array passed in ```Y[] = {0,1,0,1,0,1,0,1}``` is the output of the MUX. while ``` S0, S1, A, B, C, D``` are the 2 selectors and 4 inputs, respectively. Now you see why some ouputs are "BAD"? Yes. Some outputs in our ```Y``` are not the correct outputs according to the corresponding selectors' inputs. Hence, in order for the program to print out all "OK", we will need to change our outputs ```Y```. Look up in the pin-outs of 4-to-1 MUX and re-write the correct outputs for ```Y```. For example, if the input of S0 = 0 and S1 = 0, we will choose input E0 which is A in this case. The result is not E0 (as in the pin-outs). Since the first entry of ```A``` array is 0, not 0 is 1. Then, 1 is the first entry in the output array ```Y```. Now trace the entire arrays and correct the outputs. Your program should print out all ```OK```.  
 
 [Your program should print out all OK](https://drive.google.com/file/d/1y4oNfLzBKID9yHvfWuYEQPd1LxKLbYpR/view)
 
@@ -218,7 +220,7 @@ Now we move on and build an adder circuit. As we already learned about adding ru
 The goal of this section is for you to understand how to apply adding logic into building a circuit. 
 
 ### Materials
-Similar to other parts of the lab, we will need breadboard, wires for this section of the lab. 
+Similar to other parts of the lab, we will need breadboard, wires for this section of the lab. We also need 2 XOR gates for this circuit design.
 
 ### Steps
 Before starting building a real circuit, you should first draw the circuits on paper. First, we will draw the truth table that has 2 inputs, a carry-in, a sum S, and a carry-out column. 
